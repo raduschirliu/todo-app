@@ -1,14 +1,12 @@
 import React from 'react';
-import styles from './App.module.css';
-import TestComp from './test';
+import styles from './App.module.scss';
+import Navbar from './components/navbar/navbar';
 
 class App extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <h2>Test</h2>
-        <p>More testing</p>
-        <TestComp/>
+        <Navbar/>
       </div>
     );
   }

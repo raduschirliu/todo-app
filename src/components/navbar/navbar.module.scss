@@ -1,0 +1,20 @@
+@import "../../index.scss";
+
+.container {
+  width: 100%;
+  background: $blue;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  cursor: pointer;
+  font-size: 30px;
+  color: white;
+  margin-left: 45px;
+  height: 100%;
+  line-height: 60px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
