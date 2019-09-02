@@ -1,26 +1,2 @@
-/* Global Variables */
-
-$off-white: #F1F1F1;
-$grey-dark: #303030;
-$grey: #757575;
-$blue: #2D9CDB;
-
-/* Normalizing */
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-p {
-  margin: 0;
-}
+@import "styles/reset.scss";
+@import "styles/variables.scss";
