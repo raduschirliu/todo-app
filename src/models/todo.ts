@@ -1,6 +1,6 @@
 export default interface Todo {
   id: string;
   title: string;
-  date: Date;
+  date: Date | null;
   completed: boolean;
 }

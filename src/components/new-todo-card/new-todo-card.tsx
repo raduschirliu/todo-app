@@ -7,21 +7,29 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 import styles from './new-todo-card.module.scss';
 import todoStore from '../../stores/todo-store';
+import { ClickAwayListener } from '@material-ui/core';
 
 interface State {
   open: boolean;
   title: string;
-  date: Date;
+  date: Date | null;
 }
 
 class NewTodoCard extends React.Component<{}, State> {
+  datePickerOpen: boolean = false;
+
+  // Returns if the card inputs are empty or not
+  get cardEmpty() {
+    return this.state.title === '' && this.state.date == null;
+  }
+
   constructor(props: any) {
     super(props);
 
     this.state = {
       open: false,
       title: '',
-      date: new Date()
+      date: null
     };
   }
 
@@ -29,6 +37,15 @@ class NewTodoCard extends React.Component<{}, State> {
   open() {
     if (this.state.open) return;
     this.setState({ open: true });
+  }
+
+  // Closes the card and resets all fields
+  close() {
+    this.setState({
+      open: false,
+      title: '',
+      date: null
+    });
   }
 
   // Create the todo and close the card
@@ -40,18 +57,21 @@ class NewTodoCard extends React.Component<{}, State> {
       completed: false,
     })
 
-    this.setState({
-      open: false,
-      title: '',
-      date: new Date()
-    })
+    this.close();
   }
 
+  // Called when the card is open, and user clicks away
+  onClickAway() {
+    if (this.cardEmpty && !this.datePickerOpen) this.close();
+  }
+
+  // Called when the title input changes
   onTitleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     event.persist();
     this.setState({ title: event.target.value });
   }
 
+  // Called when the date input changes
   onDateChange(date: MaterialUiPickersDate) {
     this.setState({ date: date as Date });
   }
@@ -60,30 +80,39 @@ class NewTodoCard extends React.Component<{}, State> {
   renderContents(): React.ReactNode {
     if (this.state.open) {
       return (
-        <div className={styles.content}>
-          <IconButton className={styles.add} onClick={this.create.bind(this)}>
-            <NoteAdd />
-          </IconButton>
+        <ClickAwayListener onClickAway={this.onClickAway.bind(this)}>
+          <div className={styles.content}>
+            <IconButton
+              className={styles.add}
+              onClick={this.create.bind(this)}
+              disabled={this.state.title === ''}
+            >
+              <NoteAdd />
+            </IconButton>
 
-          <TextField
-            label="Title"
-            className={styles.title}
-            value={this.state.title}
-            onChange={this.onTitleChange.bind(this)}
-            margin="normal"
-          />
-
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-              variant="inline"
-              format="MM/dd/yyyy"
-              margin="normal"
-              label="Date"
-              value={this.state.date}
-              onChange={this.onDateChange.bind(this)}
+            <TextField
+              label="Title"
+              classes={{ root: styles.title }}
+              value={this.state.title}
+              onChange={this.onTitleChange.bind(this)}
+              margin="none"
             />
-          </MuiPickersUtilsProvider>
-        </div>
+
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                variant="inline"
+                className={styles.date}
+                format="MM/dd/yyyy"
+                margin="none"
+                label="Date"
+                value={this.state.date}
+                onChange={this.onDateChange.bind(this)}
+                onOpen={() => this.datePickerOpen = true}
+                onClose={() => this.datePickerOpen = false}
+              />
+            </MuiPickersUtilsProvider>
+          </div>
+        </ClickAwayListener>
       );
     } else {
       return (

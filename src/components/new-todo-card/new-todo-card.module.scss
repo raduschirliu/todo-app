@@ -2,10 +2,12 @@
 
 .container {
   cursor: pointer;
-  height: 60px;
+  height: 100%;
+  max-height: 60px;
   width: 900px;
   background: white;
   border-radius: 4px;
+  transition: max-height 100ms;
 
   &:hover {
     opacity: 0.8;
@@ -14,7 +16,7 @@
 
 .open {
   cursor: unset;
-  height: 120px;
+  max-height: 120px;
 }
 
 .closedTitle {
@@ -26,20 +28,23 @@
 }
 
 .content {
-  margin: 45px;
+  height: 30px;
+  padding: 45px;
   display: flex;
   align-items: center;
 }
 
 .add {
-
+  margin-bottom: -12px !important;
 }
 
 .title {
   color: $grey-dark;
-  margin-right: 20px;
+  flex: 1;
+  margin: -16px 45px 0px 45px !important;
 }
 
 .date {
   color: $grey-dark;
+  margin-top: -16px !important;
 }

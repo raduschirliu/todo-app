@@ -36,6 +36,16 @@ class TodoCard extends React.Component<Props, State> {
   }
 
   render() {
+    let date = null;
+
+    if (this.state.todo.date != null) {
+      date = (
+        <p className={[styles.text, this.getCompletedStyle()].join(' ')}>
+          {this.state.todo.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+        </p>
+      );
+    }
+
     return (
       <div className={[styles.container, this.getCompletedStyle()].join(' ')}>
         <Checkbox
@@ -47,9 +57,7 @@ class TodoCard extends React.Component<Props, State> {
         
         <p className={[styles.title, styles.text, this.getCompletedStyle()].join(' ')}>{this.state.todo.title}</p>
 
-        <p className={[styles.text, this.getCompletedStyle()].join(' ')}>
-          {this.state.todo.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-        </p>
+        {date}
       </div>
     );
   }
