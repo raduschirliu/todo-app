@@ -18,6 +18,17 @@ interface State {
 class NewTodoCard extends React.Component<{}, State> {
   datePickerOpen: boolean = false;
 
+  // Returns if the data entered in the card inputs is valid or not
+  get isValid() {
+    if (this.state.title === '') return false;
+    
+    if (this.state.date != null) {
+      if (this.state.date.toString() === 'Invalid Date') return false;
+    }
+
+    return true;
+  }
+
   // Returns if the card inputs are empty or not
   get cardEmpty() {
     return this.state.title === '' && this.state.date == null;
@@ -50,6 +61,11 @@ class NewTodoCard extends React.Component<{}, State> {
 
   // Create the todo and close the card
   create() {
+    if (!this.isValid) {
+      console.log('Invalid inputs');
+      return;
+    }
+
     todoStore.add({
       id: todoStore.todos.length.toString(),
       title: this.state.title,
@@ -85,7 +101,7 @@ class NewTodoCard extends React.Component<{}, State> {
             <IconButton
               className={styles.add}
               onClick={this.create.bind(this)}
-              disabled={this.state.title === ''}
+              disabled={!this.isValid}
             >
               <NoteAdd />
             </IconButton>

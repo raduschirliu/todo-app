@@ -9,6 +9,8 @@ import todoStore from '../../stores/todo-store';
 @observer
 class App extends React.Component {
   render() {
+    let todos = todoStore.todos.slice().reverse();
+
     return (
       <div className={styles.container}>
         <Navbar />
@@ -16,7 +18,7 @@ class App extends React.Component {
         <div className={styles.cardContainer}>
           <NewTodoCard />
           
-          {todoStore.todos.map(todo => (
+          {todos.map(todo => (
             <TodoCard key={todo.id} todo={todo}/>
           ))}
         </div>

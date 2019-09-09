@@ -12,7 +12,7 @@ class TodoStore {
   // Changes the 'completed' state of a Todo
   mark(target: Todo, state: boolean) {
     this.todos = this.todos.map(todo => {
-      if (todo !== target) return todo;
+      if (todo.id !== target.id) return todo;
       
       todo.completed = state;
       return todo;
