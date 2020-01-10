@@ -10,6 +10,11 @@ jobs:
       # Checkout repo
       - checkout
 
+      # Allow pushing to github repo
+      - add_ssh_keys:
+          fingerprints:
+            - "4d:01:a7:95:58:41:64:f4:7a:11:59:82:18:89:c8:3c"
+
       # Download and cache dependencies
       - restore_cache:
           keys:
