@@ -1,11 +1,19 @@
 version: 2.1
 jobs:
   build:
+    # Only build master branch
+    branches:
+      only:
+        - master
+
+    # Setup docker container
     docker:
       - image: circleci/node:13.6.0
     
+    # Set working directory as root repo directory
     working_directory: ~/todo-app
 
+    # Build steps
     steps:
       # Checkout repo
       - checkout
