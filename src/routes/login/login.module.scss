@@ -1,0 +1,23 @@
+@import "../../index.scss";
+
+.container {
+  padding-top: 60px;
+}
+
+.form {
+  margin: auto;
+  padding: 20px 0px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.textField {
+  margin-bottom: 20px !important;
+}

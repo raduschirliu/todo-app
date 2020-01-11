@@ -10,14 +10,9 @@
   background: #eee;
 }
 
-.cardContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.content {
+  width: 70%;
+  margin: 0px auto;
   overflow-y: auto;
   padding-bottom: 60px;
-}
-
-.card {
-  margin-top: 30px;
 }

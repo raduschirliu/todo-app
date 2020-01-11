@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import styles from './todo-card.module.scss';
-import Todo from '../../models/todo';
+import Todo from '../../../models/todo';
 
 interface Props {
   todo: Todo;

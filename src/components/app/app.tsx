@@ -1,16 +1,13 @@
 import React from 'react';
-import { observer } from 'mobx-react';
 import styles from './app.module.scss';
 import Navbar from '../navbar/navbar';
-import TodoCard from '../todo-card/todo-card';
-import NewTodoCard from '../new-todo-card/new-todo-card';
-import todoStore from '../../stores/todo-store';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Todos from '../../routes/todos/todos';
+import Login from '../../routes/login/login';
 
-@observer
 class App extends React.Component {
   render() {
-    let todos = todoStore.todos.slice().reverse();
     let theme = createMuiTheme({
       palette: {
         primary: {
@@ -22,15 +19,21 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <div className={styles.container}>
-          <Navbar />
+          <Router>
+            <Navbar />
 
-          <div className={styles.cardContainer}>
-            <NewTodoCard />
-            
-            {todos.map(todo => (
-              <TodoCard key={todo.id} todo={todo}/>
-            ))}
-          </div>
+            <div className={styles.content}>
+              <Switch>
+                <Route path="/login">
+                  <Login />
+                </Route>
+
+                <Route path="/">
+                  <Todos />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
         </div>
       </ThemeProvider>
     );

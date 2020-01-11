@@ -6,7 +6,7 @@ import NoteAdd from '@material-ui/icons/NoteAdd';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 import styles from './new-todo-card.module.scss';
-import todoStore from '../../stores/todo-store';
+import todoStore from '../../../stores/todo-store';
 import { ClickAwayListener } from '@material-ui/core';
 
 interface State {
