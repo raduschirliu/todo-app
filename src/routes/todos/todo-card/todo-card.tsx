@@ -48,16 +48,18 @@ class TodoCard extends React.Component<Props, State> {
 
     return (
       <div className={[styles.container, this.getCompletedStyle()].join(' ')}>
-        <Checkbox
-          classes={{ root: styles.checkbox }}
-          checked={this.state.todo.completed}
-          onChange={this.checkChanged.bind(this)}
-          color="primary"
-        />
-        
-        <p className={[styles.title, styles.text, this.getCompletedStyle()].join(' ')}>{this.state.todo.title}</p>
+        <div className={styles.content}>
+          <Checkbox
+            classes={{ root: styles.checkbox }}
+            checked={this.state.todo.completed}
+            onChange={this.checkChanged.bind(this)}
+            color="primary"
+          />
+          
+          <p className={[styles.title, styles.text, this.getCompletedStyle()].join(' ')}>{this.state.todo.title}</p>
 
-        {date}
+          {date}
+        </div>
       </div>
     );
   }

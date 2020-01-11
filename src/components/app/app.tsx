@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Todos from '../../routes/todos/todos';
 import Login from '../../routes/login/login';
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     let theme = createMuiTheme({
       palette: {
@@ -39,5 +39,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;

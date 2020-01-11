@@ -1,18 +1,22 @@
 @import '../../../index.scss';
 
 .container {
-  height: 30px;
-  width: 810px;
-  padding: 45px;
+  // height: 30px;
+  // width: 810px;
+  width: 100%;
   margin-top: 30px;
   background: white;
   border-radius: 4px;
-  display: flex;
-  align-items: center;
 
   &.completed {
     background: $off-white-light;
   }
+}
+
+.content {
+  padding: 45px;
+  display: flex;
+  align-items: center;
 }
 
 .checkbox {

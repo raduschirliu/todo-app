@@ -1,13 +1,14 @@
 @import "../../index.scss";
 
 .container {
-  padding-top: 60px;
+  background-color: white;
+  border-radius: 4px;
 }
 
 .form {
   margin: auto;
-  padding: 20px 0px;
-  width: 300px;
+  padding: 25px;
+  // width: 400px;
   display: flex;
   flex-direction: column;
 }
