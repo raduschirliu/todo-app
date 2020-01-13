@@ -28,7 +28,7 @@ export default class App extends React.Component {
                   <Login />
                 </Route>
 
-                <Route path="/">
+                <Route exact path="/">
                   <Todos />
                 </Route>
               </Switch>
